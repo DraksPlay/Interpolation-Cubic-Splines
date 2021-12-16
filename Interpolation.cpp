@@ -1,9 +1,4 @@
-/* Червяков Даниил В-25 
-   Создать таблицу значений функции Sin(x^4)/x^2 в узлах xi = a + i*h, i=0,1,2...n, где h=(b-a)/n.
-   Построить интерполирующую функцию F(x) методом кубических Сплайнов.
-   Найти её значения в указанных точках xj и сравнить с точными значениями, вычислив f(xj)-F(xj.
-   Вывести на экран и в файл таблицу xj, F(xj), f(xj)-F(xj).
-*/
+
 
 #define _CRT_SECURE_NO_WARNINGS
 #include <iostream>
@@ -37,7 +32,6 @@ void func(double* xi, double* yi, int n, double a, double b) {
 
 
 
-// Вычисление наклонов ( коэффициенты m )
 void Slopes(double* xi, double* yi, double* m, int n) {
 	double a = xi[0];
 	double b = xi[n];
@@ -50,7 +44,7 @@ void Slopes(double* xi, double* yi, double* m, int n) {
 	}
 }
 
-// Вычисление F(xj), а также вывод таблицы на экран и в файл
+
 void Splin(float &x0, float* x, float* y, int n, float& h, float* m) {
 	float s;
 	x0 = (x[1] - x[0]) / 2;
