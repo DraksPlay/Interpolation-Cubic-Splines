@@ -9,12 +9,14 @@
 
 using namespace std;
 
+
 double f(double x) {
 	double y;
 	if (x == 0) { return 0; }
 	y = sin(pow(x, 4)) / (x * x);
 	return y;
 }
+
 
 void func(double* xi, double* yi, int n, double a, double b) {
 	FILE* p;
@@ -31,7 +33,6 @@ void func(double* xi, double* yi, int n, double a, double b) {
 }
 
 
-
 void Slopes(double* xi, double* yi, double* m, int n) {
 	double a = xi[0];
 	double b = xi[n];
@@ -45,21 +46,6 @@ void Slopes(double* xi, double* yi, double* m, int n) {
 }
 
 
-void Splin(float &x0, float* x, float* y, int n, float& h, float* m) {
-	float s;
-	x0 = (x[1] - x[0]) / 2;
-	FILE* p = fopen("resultat.txt", "w");
-	
-	for (int i = 0; i < n; i++)
-	{
-		s = (x[i + 1] - x0) * (x[i + 1] - x0) * (2 * (x0 - x[i]) + h) / (h * h * h) * y[i] + (x0 - x[i]) * (x0 - x[i]) * (2 * (x[i + 1] - x0) + h) / (h * h * h) * y[i + 1] + (x[i + 1] - x0) * (((x[i + 1] - x0) * (x0 - x[i])) / (h * h) * m[i]) + ((x0 - x[i]) * (x0 - x[i]) * (x0 - x[i + 1]) / (h * h) * m[i + 1]);
-		printf("\nx=%f F=%f F-f=%f", x[i], s, s-y[i]);
-		fprintf(p, "%f %f\n", x0, s);
-		x0 += h;
-	}
-	fclose(p);
-}
-
 double Spline(double* xi, double* yi, double* m, double x0, int n) {
 	double s;
 	double h = xi[1] - xi[0];
@@ -71,6 +57,7 @@ double Spline(double* xi, double* yi, double* m, double x0, int n) {
 	}
 
 }
+
 
 void main()
 {
